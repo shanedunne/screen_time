@@ -1,6 +1,5 @@
 import subprocess
-import os
-import time
+import json
 
 smart_devices = {
     "d8:e2:df:25:dc:c8": None, # XBOX
@@ -34,3 +33,11 @@ if __name__ == "__main__":
     print("Scanning network...")
     get_ip = find_ip_for_mac(interface, smart_devices)
     print(smart_devices)
+
+    # write data to json file
+    # Serializing json
+    json_object = json.dumps(smart_devices, indent=4)
+ 
+    # Writing to sample.json
+    with open("./mac_ip.json", "w") as outfile:
+        outfile.write(json_object)
