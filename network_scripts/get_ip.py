@@ -1,11 +1,13 @@
 import subprocess
 import json
 
+# data structure for devices to check
 smart_devices = {
     "d8:e2:df:25:dc:c8": None, # XBOX
     "d8:e3:5e:eb:0e:50": None, # Smart TV
 }
 
+# interface for arp-scan command
 interface = "wlan0"
 
 # Find Mac Addresses Function
@@ -22,10 +24,6 @@ def find_ip_for_mac(interface, smart_devices):
         
     return smart_devices
 
-    
-    
-    return decoded_result
-
 
 # Test code
 if __name__ == "__main__":
@@ -39,5 +37,5 @@ if __name__ == "__main__":
     json_object = json.dumps(smart_devices, indent=4)
  
     # Writing to sample.json
-    with open("./mac_ip.json", "w") as outfile:
+    with open("../data/mac_ip.json", "w") as outfile:
         outfile.write(json_object)
