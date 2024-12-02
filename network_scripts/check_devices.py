@@ -98,7 +98,3 @@ def check_activity():
 
         # Save the updated activity log
         save_activity_log(activity_log)
-
-
-if __name__ == "__main__":
-    device_status = check_activity()
