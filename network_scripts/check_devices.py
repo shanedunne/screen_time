@@ -60,7 +60,8 @@ def check_activity():
 
                     # need to fix format
                     "start_time": current_time,
-                    "last_time": current_time
+                    "last_time": current_time,
+                    "session_length": 0
                 }
             else:
                 # get the id of the last session
@@ -84,7 +85,13 @@ def check_activity():
                     }
                 # else, update last time
                 else:
+
+                    # set last time
+                    last = datetime.fromisoformat(current_time)
                     last_session["last_time"] = current_time
+
+                    start = datetime.fromisoformat(last_session["start_time"])
+                    last_session["session_length"] = (last - start).total_seconds()
                 
         else:
                 # If offline, close the last session if it's still open
