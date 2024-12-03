@@ -73,8 +73,7 @@ def check_activity():
                 # get current and last time in a comparable format, not string
                 formatted_current_time = datetime.fromisoformat(current_time)
 
-                last_time = last_session["last_time"]
-                formatted_last_time = datetime.fromisoformat(last_time)
+                formatted_last_time = datetime.fromisoformat(last_session["last_time"])
 
                 # if difference greater than 60 seconds, session has expired and create a new one
                 if ((formatted_current_time - formatted_last_time) > timedelta(seconds=60)):
@@ -86,11 +85,19 @@ def check_activity():
                 # else, update last time
                 else:
 
-                    # set last time
+                    # get previous last time and current time to work out increment
+                    previous_last = datetime.fromisoformat(last_session["last_time"])
                     last = datetime.fromisoformat(current_time)
+
+                    # get increment for dynamic totalling of session and daily totals
+                    increment = (last - previous_last).total_seconds()
+
+                    # set new last time
                     last_session["last_time"] = current_time
 
                     start = datetime.fromisoformat(last_session["start_time"])
+
+                    # increment the session length
                     last_session["session_length"] = (last - start).total_seconds()
                 
         else:
