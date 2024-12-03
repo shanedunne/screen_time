@@ -9,6 +9,16 @@ def get_activity_log():
             return json.load(openfile)
     except FileNotFoundError:
         return {}
+
+# function to turn seconds into hours - minutes - seconds
+def convertToHours(seconds):
+    seconds = seconds % (24 * 3600)
+    hour = seconds // 3600
+    seconds %= 3600
+    minutes = seconds // 60
+    seconds %= 60
+     
+    return "%d:%02d:%02d" % (hour, minutes, seconds)
     
 # handle data stored on network activity
 def handle_network_data():
@@ -27,14 +37,27 @@ def handle_network_data():
     for mac, dates in data_source.items():
         daily_stats = {
             "device": mac,
-            "dates": {}
+            "dates": {},
         }
 
         # for each of the last 7 days, sum up the session times and store daily times with corresponding dates
         for day in last_seven_dates:
             if day in dates:
-                daily_time = sum(session.get("session_length", 0) for session in dates[day].values())
-                daily_stats["dates"][day] = daily_time
+                # get daily total
+
+                daily_time = 0
+                longest_session = 0
+                for session in dates[day].values():
+                    daily_time += session.get("session_length", 0)
+                    if session.get("session_length", 0) > longest_session:
+                        longest_session = session.get("session_length", 0)
+                
+                daily_stats["dates"][day] = {
+                    "daily_time": convertToHours(daily_time),
+                    "longest_session": convertToHours(longest_session)
+                }
+
+
             else:
                 daily_stats["dates"][day] = 0
         
@@ -50,4 +73,5 @@ if __name__ == "__main__":
     for device_stats in daily_stats:
         print(f"Device: {device_stats['device']}")
         for date, time in device_stats["dates"].items():
-            print(f"  Date: {date}, Daily Time: {time} seconds")
+            longest_session = device_stats.get("longest_session")
+            print(f"  Date: {date}, Daily Time: {time} hours, Longest Session: {longest_session}")
