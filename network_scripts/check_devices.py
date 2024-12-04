@@ -2,6 +2,7 @@ import json
 import subprocess
 from datetime import date, datetime, timedelta
 import uuid
+import blynk_feed
 
 # get mac and ip data to use in following functions
 def get_data():
@@ -99,6 +100,9 @@ def check_activity():
 
                     # increment the session length
                     last_session["session_length"] = (last - start).total_seconds()
+
+                    # call blynk function to update dashboard
+                    blynk_feed.current_session(mac, last_session["session_length"])
                 
         else:
                 # If offline, close the last session if it's still open
