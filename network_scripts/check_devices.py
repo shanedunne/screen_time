@@ -4,6 +4,9 @@ from datetime import date, datetime, timedelta
 import uuid
 import blynk_feed
 
+# keep a track of mac status, to allow resetting of the blynk dashboard figures
+last_known_status = {}
+
 # get mac and ip data to use in following functions
 def get_data():
     with open("./data/mac_ip.json", 'r') as openfile:
@@ -27,6 +30,11 @@ def save_activity_log(activity_log):
 def check_activity():
     mac_ip_addresses = get_data()
     for mac, ip in mac_ip_addresses.items():
+
+        # initialise the last known status dict to ensure no errors
+        if mac not in last_known_status:
+            last_known_status[mac] = "Unknown" 
+
         try:
             # Ping the IP address to check if it is active
             subprocess.check_output(f"ping -c 1 -W 1 {ip}", shell=True, stderr=subprocess.STDOUT)
@@ -54,6 +62,9 @@ def check_activity():
         # check if device status is active
         if activity == "Online":
 
+            # set last known status to online
+            last_known_status[mac] = "Online"
+            
             # check if any recorded sessions for today
             if not activity_log[mac][today]:
                 session_id = str(uuid.uuid1())
@@ -105,6 +116,10 @@ def check_activity():
                     blynk_feed.current_session(mac, last_session["session_length"])
                 
         else:
+                # get last known status. If it was Online, call blynk update function and set value to 0
+                if last_known_status[mac] == "Online":
+                    blynk_feed.current_session(mac, 0)
+
                 # If offline, close the last session if it's still open
                 if activity_log[mac][today]:
                     last_session_id = list(activity_log[mac][today].keys())[-1]
