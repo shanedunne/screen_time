@@ -1,0 +1,29 @@
+{
+  "name": "screen_time",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shanedunne/screen_time.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shanedunne/screen_time/issues"
+  },
+  "homepage": "https://github.com/shanedunne/screen_time#readme",
+  "dependencies": {
+    "axios": "^1.7.9",
+    "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.1",
+    "express-fileupload": "^1.5.1",
+    "express-handlebars": "^8.0.1"
+  }
+}
