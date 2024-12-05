@@ -24,11 +24,21 @@ def current_session(mac, session_length):
     # if mac is xbox, write to xbox virtual pin
     if (mac == os.getenv('XBOX_MAC')):
         blynk.virtual_write(0, formatted_session_length)
-        print(f'current session length: {formatted_session_length}')
-        print(type(formatted_session_length))
+
+        # log activated event
+        blynk.log_event("xbox_active")
+
+        # 60 minute session event
+        if (formatted_session_length == 1):
+             blynk.log_event("xbox_60_min")
     
     # if mac is tv, write to xbox virtual pin
     if (mac == os.getenv('TV_MAC')):
         blynk.virtual_write(1, formatted_session_length)
-        print(f'current session length: {formatted_session_length}')
-        print(type(formatted_session_length))
+
+        # log activated event
+        blynk.log_event("tv_active")
+
+        # 90 minute session event
+        if (formatted_session_length == 1):
+             blynk.log_event("tv_90_min")
