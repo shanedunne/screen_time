@@ -31,7 +31,7 @@ app.use("/", router);
 
 const listener = app.listen(process.env.PORT || 4000, function () {
   console.log(
-    `Weather station site started on http://localhost:${
+    `Screen Time site started on http://localhost:${
       listener.address().port
     }`
   );

@@ -17,5 +17,31 @@ export const deviceStore = {
         await db.read()
         const deviceByMac = db.data.devices.find((device) => device.mac === mac);
         return deviceByMac
+    },
+
+    // get device data from api
+    async getStats() {
+        const url = "http://localhost:5001/api/devices/stats"
+        try {
+            const response = await fetch(url)
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`)
+            }
+
+            const json = await response.json();
+            console.log(json);
+            return json
+        } catch (error) {
+            console.error(error.message)
+        }
+    },
+
+    /*
+    async getDeviceSpecificStats(mac) {
+        const stats = await this.getStats()
+        console.log(typeof(stats))
+        // const deviceStats = stats.find((stat) => stat.device === mac);
+        return deviceStats;
     }
+    */
 }

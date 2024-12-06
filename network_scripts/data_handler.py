@@ -1,7 +1,6 @@
 import json
 from datetime import date, datetime, timedelta
 
-
 # get activity log information. If log does not exist, return an empty dict
 def get_activity_log():
     try:
@@ -66,12 +65,6 @@ def handle_network_data():
     
     return all_daily_stats
 
-if __name__ == "__main__":
-    daily_stats = handle_network_data()
 
-    # Print the results for debugging
-    for device_stats in daily_stats:
-        print(f"Device: {device_stats['device']}")
-        for date, time in device_stats["dates"].items():
-            longest_session = device_stats.get("longest_session")
-            print(f"  Date: {date}, Daily Time: {time} hours, Longest Session: {longest_session}")
+           
+
