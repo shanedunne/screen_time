@@ -1,0 +1,14 @@
+{
+    "devices": [
+        {
+            "mac": "d8:e2:df:25:dc:c8",
+            "ip": "192.168.0.193",
+            "device": "Living Room TV"
+        },
+        {
+            "mac": "d8:e3:5e:eb:0e:50",
+            "ip": "192.168.0.225",
+            "device": "Xbox S"
+        }
+    ]
+}
