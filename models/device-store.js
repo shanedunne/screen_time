@@ -10,5 +10,12 @@ export const deviceStore = {
         
         return db.data.devices;
 
+    },
+
+    // get device by mac
+    async getDeviceByMac(mac) {
+        await db.read()
+        const deviceByMac = db.data.devices.find((device) => device.mac === mac);
+        return deviceByMac
     }
 }
