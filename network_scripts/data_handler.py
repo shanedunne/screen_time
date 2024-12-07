@@ -23,7 +23,7 @@ def convertToHours(seconds):
 def handle_network_data():
     data_source = get_activity_log()
 
-    all_daily_stats = []
+    all_daily_stats = {}
 
     # get last 7 dates to acquire data
     last_seven_dates = []
@@ -34,8 +34,7 @@ def handle_network_data():
 
     # for each device, get daily statistics, depending on day
     for mac, dates in data_source.items():
-        daily_stats = {
-            "device": mac,
+        mac_data = {
             "dates": {},
         }
 
@@ -51,17 +50,17 @@ def handle_network_data():
                     if session.get("session_length", 0) > longest_session:
                         longest_session = session.get("session_length", 0)
                 
-                daily_stats["dates"][day] = {
+                mac_data["dates"][day] = {
                     "daily_time": convertToHours(daily_time),
                     "longest_session": convertToHours(longest_session)
                 }
 
 
             else:
-                daily_stats["dates"][day] = 0
+                mac_data["dates"][day] = 0
         
         # add to all daily stats
-        all_daily_stats.append(daily_stats)
+        all_daily_stats[mac] = mac_data
     
     return all_daily_stats
 
