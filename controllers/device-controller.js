@@ -8,8 +8,8 @@ export const deviceController = {
         const viewData = {
             title: "Device",
             device: device,
+            stats: stats
         };
-        console.log("stats to controller: ", stats)
         console.log("rendering device view")
         response.render("device-view", viewData);
     }

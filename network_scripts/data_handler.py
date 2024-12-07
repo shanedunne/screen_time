@@ -51,7 +51,7 @@ def handle_network_data():
                         longest_session = session.get("session_length", 0)
                 
                 mac_data["dates"][day] = {
-                    "daily_time": convertToHours(daily_time),
+                    "daily_time": daily_time,
                     "longest_session": convertToHours(longest_session)
                 }
 
