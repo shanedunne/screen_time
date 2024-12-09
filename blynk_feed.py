@@ -2,9 +2,14 @@ import BlynkLib
 import time
 import os
 from dotenv import load_dotenv
+from sense_hat import SenseHat
+from time import sleep
 
 # Load environment variables
 load_dotenv()
+
+# create instance of SenseHat
+sense = SenseHat()
 
 # Blynk authentication token
 BLYNK_AUTH = os.getenv('BLYNK_AUTH_CODE')
@@ -42,3 +47,21 @@ def current_session(mac, session_length):
         # 90 minute session event
         if (formatted_session_length == 1):
              blynk.log_event("tv_90_min")
+
+
+# Initialise button as off
+button_value = "0"
+
+# handle messages to sensehat, triggered in blynk
+@blynk.on("V2")
+def longSessionWaring(value): 
+    message = "Turn it off"
+    button_value = value[0]
+
+    # if switch is turned on, pass message to sensehat
+    if button_value == "1":
+        sense.show_message(message, text_colour=(255, 0, 0), scroll_speed=0.1)
+    sleep(10)
+    sense.clear()
+    button_value = "0"
+    blynk.virtual_write(2, button_value)
