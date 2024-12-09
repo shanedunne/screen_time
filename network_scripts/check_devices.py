@@ -9,10 +9,10 @@ last_known_status = {}
 
 # get mac and ip data to use in following functions
 def get_data():
-    with open("./data/mac_ip.json", 'r') as openfile:
+    with open("./data/devices.json", 'r') as openfile:
         # assign data to variable
         json_object = json.load(openfile)
-    return json_object
+    return json_object["devices"]
 
 # get activity log information. If log does not exist, return an empty dict
 def get_activity_log():
@@ -28,8 +28,10 @@ def save_activity_log(activity_log):
         json.dump(activity_log, openfile, indent=4)
 
 def check_activity():
-    mac_ip_addresses = get_data()
-    for mac, ip in mac_ip_addresses.items():
+    devices = get_data()
+    for device in devices:
+        mac = device["mac"]
+        ip = device["ip"]
 
         # initialise the last known status dict to ensure no errors
         if mac not in last_known_status:
