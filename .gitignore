@@ -24,3 +24,5 @@ dist/
 build/
 
 # data
+devices.json
+activity_log.json

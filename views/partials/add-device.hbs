@@ -1,0 +1,29 @@
+<div class="section">
+  <h2 class="title is-2">Add A New Device</h2>
+  <p class="subtitle">Add a new device to your dashboard. The device must be connected to your local network</p>
+  <form class="section box" action="/dashboard/adddevice" method="POST">
+  <div class="columns">
+    <div class="column">
+      <div class="field">
+        <input
+          class="input"
+          type="text"
+          placeholder="Enter device nickname"
+          name="nickname"
+        />
+      </div>
+    </div>
+    <div class="column">
+      <div class="field">
+        <input
+          class="input"
+          type="text"
+          placeholder="Enter device mac address"
+          name="mac"
+        />
+      </div>
+    </div>
+  </div>
+  <button class="button is-link">Add Device</button>
+</form>
+</div>

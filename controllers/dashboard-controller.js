@@ -15,4 +15,19 @@ export const dashboardController = {
         response.render("dashboard-view", viewData);
 
     },
+
+    // add new device
+    async addDevice(request, response) {
+
+        console.log(request.body)
+        const newDevice = {
+            device: request.body.nickname,
+            mac: request.body.mac.toLowerCase(),
+            ip: ""
+        }
+
+        console.log("passing to device store...")
+        await deviceStore.callAddDeviceAPI(newDevice)
+        response.redirect("/")
+    }
 };

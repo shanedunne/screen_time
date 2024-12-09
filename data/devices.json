@@ -10,6 +10,11 @@
             "mac": "d8:e3:5e:eb:0e:50",
             "ip": "192.168.0.225",
             "device": "Living Room TV"
+        },
+        {
+            "device": "macbook",
+            "mac": "60:3e:5f:81:bc:44",
+            "ip": "192.168.0.232"
         }
     ]
 }

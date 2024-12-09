@@ -1,6 +1,5 @@
-import Chart from 'chart.js/auto'
 import { initStore } from "../utils/store_utils.js";
-import { getStats } from "../utils/get_stats.js";
+import { getStats, addDevice } from "../utils/api_requests.js";
 
 const db = initStore("devices")
 
@@ -22,12 +21,18 @@ export const deviceStore = {
     },
 
 
-
+    // get stats specific to the provided mac address
     async getDeviceSpecificStats(mac) {
         const stats = await getStats()
         const deviceStats = stats[mac]
         return deviceStats;
     },
+
+    // pass the new device api details to python
+    async callAddDeviceAPI(device) {
+        console.log("calling api...")
+        addDevice(device)
+    }
 
 
 }
