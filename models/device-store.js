@@ -32,7 +32,13 @@ export const deviceStore = {
     async callAddDeviceAPI(device) {
         console.log("calling api...")
         addDevice(device)
-    }
+    },
+
+    // gets the devices associated to a specific user
+    async getDevicesByUserId(userid) {
+        await db.read();
+        return db.data.devices.filter((device) => device.userid === userid);
+      },
 
 
 }
