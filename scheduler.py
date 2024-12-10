@@ -50,7 +50,7 @@ schedule.every(6).hours.do(get_ip.find_ip_for_mac)
 # schedule the activity checker script to run every 15 seconds
 schedule.every(15).seconds.do(check_devices.check_activity)
 
-send_email = weekly_update_email.send_weekly_email()
+send_email = weekly_update_email.issue_all_user_emails()
 
 while True:
     schedule.run_pending()
