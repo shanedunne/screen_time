@@ -1,0 +1,31 @@
+<div class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <h1 class="title is-t1">{{user.firstName}}'s Account Information</h1>
+
+        <div class="box">
+            <div class="field">
+                <label class="label">First Name</label>
+                    <p class="is-size-5">{{user.firstName}}</p>
+            </div>
+            <div class="field">
+                <label class="label">Last Name</label>
+                    <p class="is-size-5">{{user.lastName}}</p>
+            </div>
+            <div class="field">
+                <label class="label">Email Address</label>
+                    <p class="is-size-5">{{user.email}}</p>
+            </div>
+            <div class="field">
+                <label class="label">Password</label>
+                    <p class="is-size-5">{{user.password}}</p>
+            </div>
+            <div class="has-text-centered">
+                <a href="/account/{{user._id}}/editInfo" class="button is-primary">Edit Account Information</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

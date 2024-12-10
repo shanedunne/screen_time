@@ -1,5 +1,5 @@
 import { v4 } from "uuid";
-import { initStore } from "../utils/store-utils.js";
+import { initStore } from "../utils/store_utils.js";
 
 const db = initStore("users");
 

@@ -1,0 +1,60 @@
+{{> menu active="account"}}
+
+
+<section>
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column">
+        <h1 class="title is-t1">Edit {{user.firstName}}'s Account Information</h1>
+
+        <div class="box">
+          <form class="box" action="/account/{{user._id}}/updateaccount" method="POST">
+            <label>Account Details:</label>
+            <div class="field is-horizontal">
+              <div class="field-body">
+                <div class="field">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Enter first name"
+                    name="firstName"
+                    value="{{user.firstName}}"
+                  />
+                </div>
+                <div class="field">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Enter last name"
+                    name="lastName"
+                    value="{{user.lastName}}"
+                  />
+                </div>
+                <div class="field">
+                  <input
+                    class="input"
+                    type="email"
+                    placeholder="Enter email address"
+                    name="email"
+                    value="{{user.email}}"
+                  />
+                </div>
+                <div class="field">
+                  <input
+                    class="input"
+                    type="text"
+                    placeholder="Enter password"
+                    name="password"
+                    value="{{user.password}}"
+                  />
+                </div>
+              </div>
+            </div>
+            <button class="button is-primary">Update Account Information</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
