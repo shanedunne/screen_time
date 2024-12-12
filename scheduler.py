@@ -53,7 +53,6 @@ schedule.every(15).seconds.do(check_devices.check_activity)
 # schedule weekly usage emails
 schedule.every().monday.at("10:00").do(weekly_update_email.issue_all_user_emails)
 
-weekly_update_email.issue_all_user_emails()
 
 while True:
     schedule.run_pending()

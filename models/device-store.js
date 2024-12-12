@@ -20,6 +20,14 @@ export const deviceStore = {
         return deviceByMac
     },
 
+    // deletes a device by its id
+    async deleteDeviceByMac(mac) {
+        await db.read();
+        const index = db.data.devices.findIndex((device) => device.mac === mac);
+        db.data.devices.splice(index, 1);
+        await db.write();
+    },
+
 
     // get stats specific to the provided mac address
     async getDeviceSpecificStats(mac) {

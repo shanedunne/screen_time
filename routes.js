@@ -14,9 +14,12 @@ router.get("/logout", accountsController.logout);
 router.post("/register", accountsController.register);
 router.post("/authenticate", accountsController.authenticate);
 
-router.get("/dashboard", dashboardController.index);
-router.get("/device/:mac", deviceController.index);
 router.post("/dashboard/adddevice", dashboardController.addDevice);
+router.get("/dashboard", dashboardController.index);
+
+router.get("/device/deletedevice/:mac", deviceController.deleteDevice);
+router.get("/device/:mac", deviceController.index);
+
 
 router.get("/account", accountsController.getAccountInfo);
 router.get("/account/:userid/editInfo", accountsController.accountEditor);

@@ -1,23 +1,17 @@
 {
-    "file": "./data/devices.json",
-    "devices": [
-        {
-            "mac": "d8:e2:df:25:dc:c8",
-            "ip": "192.168.0.193",
-            "device": "Xbox S",
-            "userid": "02cd6eb6-0d04-48bd-9a19-540a7220bd33"
-        },
-        {
-            "mac": "d8:e3:5e:eb:0e:50",
-            "ip": "192.168.0.225",
-            "device": "Living Room TV",
-            "userid": "02cd6eb6-0d04-48bd-9a19-540a7220bd33"
-        },
-        {
-            "device": "macbook",
-            "mac": "60:3e:5f:81:bc:44",
-            "ip": "192.168.0.232",
-            "userid": "02cd6eb6-0d04-48bd-9a19-540a7220bd33"
-        }
-    ]
+  "file": "./data/devices.json",
+  "devices": [
+    {
+      "mac": "d8:e2:df:25:dc:c8",
+      "ip": "192.168.0.193",
+      "device": "Xbox S",
+      "userid": "02cd6eb6-0d04-48bd-9a19-540a7220bd33"
+    },
+    {
+      "device": "macbook",
+      "mac": "60:3e:5f:81:bc:44",
+      "ip": "192.168.0.232",
+      "userid": "02cd6eb6-0d04-48bd-9a19-540a7220bd33"
+    }
+  ]
 }

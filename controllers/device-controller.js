@@ -12,5 +12,13 @@ export const deviceController = {
         };
         console.log("rendering device view")
         response.render("device-view", viewData);
+    },
+
+    async deleteDevice(request, response) {
+        const deviceMac = request.params.mac;
+
+        await deviceStore.deleteDeviceByMac(deviceMac);
+        console.log(`Device with mac of ${deviceMac} deleted`)
+        response.redirect("/dashboard")
     }
 }
