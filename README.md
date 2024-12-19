@@ -117,3 +117,4 @@ Things you can do on the dashboard
 - Bulma - CSS Framework
 - Express JS - As the server
 - Axios - for fetching data from external APIs
+- AWS SES - Automated email sending

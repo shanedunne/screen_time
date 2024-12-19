@@ -2,7 +2,7 @@
   "file": "./data/users.json",
   "users": [
     {
-      "firstName": "Shane",
+      "firstName": "TEST",
       "lastName": "Dunne",
       "email": "shanejjdunne@hotmail.com",
       "password": "LhrJ**9@$v5rmgu",
